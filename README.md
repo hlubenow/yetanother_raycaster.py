@@ -14,3 +14,7 @@ First, I translated his tutorial code to PyOpenGL while trying to stay as close 
 Then I wrote a Pygame version, that is a bit more free (but does the same thing).
 
 My project uses the MIT License, because the original code uses that license.
+
+Oh, and the line to compile 3DSage's original C-code on Linux is (with OpenGL-devel packages, and for example freeglut-devel installed):
+
+    gcc 3DSage_Raycaster_v1.c -lglut -lGL -lGLU -lm
