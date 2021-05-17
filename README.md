@@ -9,8 +9,8 @@ The resulting data is then used to create a 3D projection of the environment. Ea
 The developer "3DSage" has provided a nice [tutorial video on Youtube](https://www.youtube.com/watch?v=gYRrGTC7GtA) about the subject.
 He uses C and the OpenGL library. His code can be found [here](https://github.com/3DSage/OpenGL-Raycaster_v1).
 
-First, I translated his tutorial code from C to Python/PyOpenGL while trying to stay as close to his version as possible.
+First, I translated his tutorial code from C to PyOpenGL while trying to stay as close to his version as possible.
 
-Then I wrote a Python/Pygame version, that is a bit more free (but does the same thing).
+Then I wrote a Pygame version, that is a bit more free (but does the same thing).
 
 My project uses the MIT License, because the original code uses that license.
