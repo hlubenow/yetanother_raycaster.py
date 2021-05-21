@@ -1,6 +1,6 @@
 ### yetanother_raycaster_pygame.py 2.0
 
-This is a much more elaborate version (in Python 2.7/Pygame) of the raycaster tutorial script described in the parent directory. This version features:
+This is a much more elaborate version (in Python 2.7/Pygame) of the raycaster tutorial script described in the parent directory. This version (2.0) features:
 
 - Larger mazes with scrolling viewport (cool!),
 - Collision detection with sound,
