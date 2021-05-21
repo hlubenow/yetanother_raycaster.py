@@ -20,5 +20,4 @@ A much earlier version "1.1" containing a more literal translation of the tutori
 
 License is the MIT license as described in the directory above.
 
-Notifications:
 @3DSage I'm going to the beach now. (Wish, I could ...)
