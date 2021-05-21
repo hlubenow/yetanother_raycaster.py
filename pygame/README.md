@@ -7,7 +7,7 @@ This is a much more elaborate version (in Python 2.7/Pygame) of the raycaster tu
 - Random generated mazes,
 - Optional (simple) shading.
 
-Maze generation code by [https://github.com/exciteabletom/mazegenerator](exciteabletom).
-Few (but relevant) lines of shading code by [https://github.com/StanislavPetrovV/Raycasting-3d-game-tutorial](Stanislav Petrov).
+Maze generation code by [exciteabletom](https://github.com/exciteabletom/mazegenerator).
+Few (but relevant) lines of shading code by [Stanislav Petrov](https://github.com/StanislavPetrovV/Raycasting-3d-game-tutorial).
 
 License is the MIT license as described in the directory above.
