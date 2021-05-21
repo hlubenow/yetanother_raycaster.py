@@ -11,6 +11,6 @@ Maze generation code by [exciteabletom](https://github.com/exciteabletom/mazegen
 
 Few (but relevant) lines of shading code by [Stanislav Petrov](https://github.com/StanislavPetrovV/Raycasting-3d-game-tutorial).
 
-A much earlier version "1.1" containing a more literal translation of the tutorial code is kept in the according directory.
+A much earlier version "1.1" containing a more literal translation of the tutorial code is kept in the according directory. It is not needed to run version 2.0.
 
 License is the MIT license as described in the directory above.
