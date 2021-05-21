@@ -19,10 +19,5 @@ License is the MIT license as described in the directory above.
 
 
 ```diff
-- red
-test
-+ green
-! orange
-# gray
+- test
 ```
-<span style=“color:red;”> text </span>
