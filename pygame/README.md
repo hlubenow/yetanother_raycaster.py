@@ -5,13 +5,14 @@ This is a much more elaborate version (in Python 2.7/Pygame) of the raycaster tu
 - Larger mazes with scrolling viewport (cool!),
 - Collision detection with sound,
 - Random generated mazes,
-- Optional (simple) shading.
+- Optional setting of random maze size,
+- Optional (simple) wall shading.
 
 Main ray casting algorithm by [3DSage](https://github.com/3DSage/OpenGL-Raycaster_v1).
 
 Random maze generation code by [exciteabletom](https://github.com/exciteabletom/mazegenerator).
 
-Few (but relevant) lines of shading code by [Stanislav Petrov](https://github.com/StanislavPetrovV/Raycasting-3d-game-tutorial).
+Few (but relevant) lines of wall shading code by [Stanislav Petrov](https://github.com/StanislavPetrovV/Raycasting-3d-game-tutorial).
 
 Sound "wallhit.wav" created by me with a software synthesizer (called ZynAddSubFx).
 
