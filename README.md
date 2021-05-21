@@ -11,7 +11,9 @@ He uses C and the OpenGL library. His code can be found [here](https://github.co
 
 First, I translated his tutorial code to PyOpenGL while trying to stay as close to his C-version as possible.
 
-Then I wrote a Pygame version, that is a bit more free (but does the same thing).
+Then I wrote a Pygame version (1.1), that is a bit more free (but does the same thing).
+
+And a more elaborate Pygame version (2.0). See the file `README.md` in the `pygame` directory for details.
 
 My project uses the MIT License, because the original code uses that license.
 
