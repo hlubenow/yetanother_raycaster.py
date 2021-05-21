@@ -2,7 +2,7 @@
 
 This is a much more elaborate version (in Python 2.7/Pygame) of the raycaster tutorial script described in the parent directory. This version (2.0) features:
 
-- Larger mazes with scrolling viewport (<div class="text-red">cool!</div>),
+- Larger mazes with scrolling viewport (<div class="text-purple">cool!</div>),
 - Collision detection with sound,
 - Random generated mazes,
 - Optional (simple) shading.
