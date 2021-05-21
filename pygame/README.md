@@ -25,3 +25,4 @@ test
 ! orange
 # gray
 ```
+<span style=“color:red;”> text </span>
