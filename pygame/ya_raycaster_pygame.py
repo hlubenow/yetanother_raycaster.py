@@ -15,7 +15,9 @@ import os, sys
 from mazegenerator import *
 
 RANDOMMAZE      = True
-RANDOMMAZE_SIZE = (8, 8)
+RANDOMMAZE_SIZE = (20, 20)
+
+JOYSTICK        = False
 
 SHADING         = False
 
@@ -188,23 +190,27 @@ class Main:
     def __init__(self):
 
         self.map = Map()
+        
+        self.keystates = {}
+        for i in (pygame.K_a, pygame.K_LEFT, pygame.K_d, pygame.K_RIGHT,
+                  pygame.K_w, pygame.K_UP, pygame.K_s, pygame.K_DOWN,
+                  pygame.K_q, pygame.K_ESCAPE):
+            self.keystates[i] = False
 
-        self.movements = { pygame.K_a      : "strafe_left",
-                           pygame.K_LEFT   : "turn_left",
-                           pygame.K_d      : "strafe_right",
-                           pygame.K_RIGHT  : "turn_right",
-                           pygame.K_w      : "forward",
-                           pygame.K_UP     : "forward",
-                           pygame.K_s      : "backwards",
-                           pygame.K_DOWN   : "backwards",
-                           pygame.K_q      : "quit",
-                           pygame.K_ESCAPE : "quit"}
+        if JOYSTICK:
+            self.joystickstates = {}
+            for i in ("left", "right", "up", "down", "firing"):
+                self.joystickstates[i] = False
 
         os.environ['SDL_VIDEO_WINDOW_POS'] = "112, 72"
         self.screen = pygame.display.set_mode((1024, 510))
-        pygame.display.set_caption("Yet another raycaster")
+        pygame.display.set_caption("YouTube-3DSage")
         pygame.mixer.pre_init(44100, -16, 1, 512)
         pygame.init()
+
+        if JOYSTICK:
+            self.joystick = pygame.joystick.Joystick(0)
+            self.joystick.init()
         self.sounds = {}
         self.sounds["wallhit"] = pygame.mixer.Sound("sound/wallhit.wav")
         self.player = Player(self.map, self.sounds)
@@ -227,13 +233,77 @@ class Main:
         pygame.quit()
 
     def processEvents(self):
-        pygame.event.pump()
-        pressed = pygame.key.get_pressed()
-        for i in self.movements.keys():
-            if pressed[i]:
-                self.player.move(self.movements[i])
-        if pressed[pygame.K_q]:
+
+        for event in pygame.event.get():
+
+            if event.type == pygame.KEYDOWN:
+                for i in self.keystates:
+                    if event.key == i:
+                        self.keystates[i] = True
+
+            if event.type == pygame.KEYUP:
+                for i in self.keystates:
+                    if event.key == i:
+                        self.keystates[i] = False
+
+            if JOYSTICK:
+
+                if event.type == pygame.JOYBUTTONDOWN:
+                    self.joystickstates["firing"] = True
+
+                if event.type == pygame.JOYBUTTONUP:
+                    self.joystickstates["firing"] = False
+
+                if event.type == pygame.JOYAXISMOTION:
+
+                    # Joystick pushed:
+                    if event.axis == 0 and int(event.value) == -1:
+                        self.joystickstates["left"] = True
+                    if event.axis == 0 and int(event.value) == 1:
+                        self.joystickstates["right"] = True
+                    if event.axis == 1 and int(event.value) == -1:
+                        self.joystickstates["up"] = True
+                    if event.axis == 1 and int(event.value) == 1:
+                        self.joystickstates["down"] = True
+
+                    # Joystick released:
+                    if event.axis == 0 and int(event.value) == 0:
+                        self.joystickstates["left"] = False
+                        self.joystickstates["right"] = False
+
+                    if event.axis == 1 and int(event.value) == 0:
+                        self.joystickstates["up"] = False
+                        self.joystickstates["down"] = False
+
+        if self.keystates[pygame.K_q] or self.keystates[pygame.K_ESCAPE]:
             return "quit"
+        if self.keystates[pygame.K_a]:
+            self.player.move("strafe_left")
+        if self.keystates[pygame.K_d]:
+            self.player.move("strafe_right")
+        if self.keystates[pygame.K_LEFT]:
+            self.player.move("turn_left")
+        if self.keystates[pygame.K_RIGHT]:
+            self.player.move("turn_right")
+        if self.keystates[pygame.K_UP] or self.keystates[pygame.K_w]:
+            self.player.move("forward")
+        if self.keystates[pygame.K_DOWN] or self.keystates[pygame.K_s]:
+            self.player.move("backwards")
+
+        if JOYSTICK:
+            if self.joystickstates["firing"]:
+                self.player.setSpeed("fast")
+            else:
+                self.player.setSpeed("normal")
+            if self.joystickstates["left"]:
+                self.player.move("turn_left")
+            if self.joystickstates["right"]:
+                self.player.move("turn_right")
+            if self.joystickstates["up"]:
+                self.player.move("forward")
+            if self.joystickstates["down"]:
+                self.player.move("backwards")
+
         return 0
 
     def fixAngle(self, a):
@@ -392,6 +462,7 @@ class Player:
         self.angle  = 1.5 * PI
         self.dx     =  math.cos(self.angle)
         self.dy     = -math.sin(self.angle)
+        self.speed = 5
         self.check  = []
         self.destination = []
         self.soundplayed = 0
@@ -410,6 +481,12 @@ class Player:
         self.y = self.map.tilesize * 1.5
         self.setDrawCoordinates()
         self.map.move(self)
+
+    def setSpeed(self, description):
+        if description == "normal":
+            self.speed = 5
+        else:
+            self.speed = 10
 
     def fixAngle(self, a):
         if a > 2 * PI:
@@ -474,12 +551,12 @@ class Player:
 
         if movement == "forward":
             self.check       = (self.x + self.dx * 20, self.y + self.dy * 20)
-            self.destination = (self.x + self.dx * 5, self.y + self.dy * 5)
+            self.destination = (self.x + self.dx * self.speed, self.y + self.dy * self.speed)
             self.checkAndMove()
 
         if movement == "backwards":
             self.check       = (self.x - self.dx * 20, self.y - self.dy * 20)
-            self.destination = (self.x - self.dx * 5, self.y - self.dy * 5)
+            self.destination = (self.x - self.dx * self.speed, self.y - self.dy * self.speed)
             self.checkAndMove()
 
         if movement == "strafe_left":
