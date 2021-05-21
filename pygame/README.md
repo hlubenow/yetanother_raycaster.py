@@ -6,7 +6,8 @@ This is a much more elaborate version (in Python 2.7/Pygame) of the raycaster tu
 - Collision detection with sound,
 - Random generated mazes,
 - Optional setting of the size of the generated maze,
-- Optional (simple) wall shading.
+- Optional (simple) wall shading,
+- Optional joystick support (1 joystick).
 
 Main ray casting algorithm by [3DSage](https://github.com/3DSage/OpenGL-Raycaster_v1).
 
