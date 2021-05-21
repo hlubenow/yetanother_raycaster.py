@@ -19,3 +19,5 @@ Sound "wallhit.wav" created by me with a software synthesizer (called ZynAddSubF
 A much earlier version "1.1" containing a more literal translation of the tutorial code is kept in the according directory. It is not needed to run version 2.0.
 
 License is the MIT license as described in the directory above.
+
+Notifications: @3DSage "I'm going to the beach now." (Wish, I could ...)
