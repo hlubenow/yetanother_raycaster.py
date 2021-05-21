@@ -9,7 +9,7 @@ This is a much more elaborate version (in Python 2.7/Pygame) of the raycaster tu
 - Optional (simple) wall shading,
 - Optional joystick support (1 joystick).
 
-The options are set in variables in upper case like for example "SHADING = True" at the beginning of the script.
+The options are set in variables in upper case like for example `SHADING = True` at the beginning of the script.
 
 Main ray casting algorithm by [3DSage](https://github.com/3DSage/OpenGL-Raycaster_v1).
 
