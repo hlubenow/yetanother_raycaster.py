@@ -5,7 +5,7 @@ This is a much more elaborate version (in Python 2.7/Pygame) of the raycaster tu
 - Larger mazes with scrolling viewport (cool!),
 - Collision detection with sound,
 - Random generated mazes,
-- Optional setting of the size of the generated maze,
+- Optio to set the size of the generated maze,
 - Optional (simple) wall shading,
 - Optional joystick support (1 joystick),
 - Option to not show the rays.
