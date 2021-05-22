@@ -7,7 +7,8 @@ This is a much more elaborate version (in Python 2.7/Pygame) of the raycaster tu
 - Random generated mazes,
 - Optional setting of the size of the generated maze,
 - Optional (simple) wall shading,
-- Optional joystick support (1 joystick).
+- Optional joystick support (1 joystick),
+- Option to not show the rays.
 
 The options can be set in variables in upper case at the beginning of the script, like for example `SHADING = True`.
 
